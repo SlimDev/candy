@@ -4,6 +4,11 @@
   <remote  name="github"
            fetch="https://github.com" />
 
+  <remote  name="candy"
+           revision="refs/heads/c7.1.1"
+           fetch=".."
+           review="gerrit.bbqdroid.org" />
+
   <remote  name="aosp"
            fetch="https://android.googlesource.com"
            review="android-review.googlesource.com" />
@@ -29,16 +34,19 @@
            fetch="https://github.com/TeslaRom-N/"
            revision="n7.1.1" /> 
 
-  <default revision="refs/tags/android-7.1.1_r13"
-           remote="aosp"
+  <default revision="refs/heads/c7.1.1"
+           remote="candy"
            sync-c="true"
            sync-j="4" />
 
-  <!-- Tesla Repo's -->
-  <project path="manifest" name="manifest" remote="tesla" />
-  <project path="build" name="build" groups="pdk,tradefed" remote="tesla" >
+  <!-- Candy -->
+  <project path="candy" name="CandyRoms/candy" remote="candy" revision="c7.1.1" />
+  <project path="vendor/candy" name="CandyRoms/vendor_candy" remote="candy" revision="c7.1.1" />
+  <project path="build" name="CandyRoms/build" remote="candy" revision="c7.1.1" >
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
+
+  <!-- Tesla -->
   <project path="art" name="art" groups="pdk" remote="tesla"  />
   <project path="bionic" name="bionic" groups="pdk" remote="tesla" />
   <project path="bootable/recovery" name="bootable_recovery" groups="pdk" remote="tesla" />
@@ -138,7 +146,6 @@
   <project path="vendor/qcom/opensource/dataservices" name="vendor_qcom_opensource_dataservices" remote="tesla" />
   <project path="vendor/qcom/opensource/dpm" name="vendor_qcom_opensource_dpm" remote="tesla" />
   <project path="vendor/qcom/opensource/time-services" name="vendor_qcom_opensource_time-services" remote="tesla" />
-  <project path="vendor/tesla" name="vendor_tesla" remote="tesla" />
 
   <!-- LockClock -->
   <project path="external/google" name="external_google" remote="tesla" />
